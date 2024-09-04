@@ -73,7 +73,17 @@
 
     $z[0] = "MySQL";
     print_r($z);
+
+    echo '<br />';
+    echo '<br />';
+    echo "\$GLOBALS['a'] = " . $GLOBALS['a'] . " (" . gettype($GLOBALS['a']) . ")<br />";
+    echo "\$GLOBALS['b'] = " . $GLOBALS['b'] . " (" . gettype($GLOBALS['b']) . ")<br />";
+    echo "\$GLOBALS['c'] = " . $GLOBALS['c'] . " (" . gettype($GLOBALS['c']) . ")<br />";
+    echo "\$GLOBALS['z'] = ";
+    print_r($GLOBALS['z']);
+    echo " (" . gettype($GLOBALS['z']) . ")<br />";
 ?>
+
 
 </body>
 
