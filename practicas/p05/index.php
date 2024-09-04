@@ -119,6 +119,20 @@ echo '<br />';
 echo '<br />';
 echo var_export($c, true) . '<br />';
 echo var_export($e, true) . '<br />';
+
+echo '<br />';
+$apacheVersion = $_SERVER['SERVER_SOFTWARE'];
+$phpVersion = phpversion();
+echo $apacheVersion;
+echo $phpVersion;
+
+echo '<br />';
+$serverOS = PHP_OS;
+echo $serverOS;
+
+echo '<br />';
+$lenguajeBuscador = $_SERVER['HTTP_ACCEPT_LANGUAGE'];
+echo $lenguajeBuscador;
 ?>
 
 </body>
