@@ -84,6 +84,12 @@
     echo " (" . gettype($GLOBALS['z']) . ")<br />";
 ?>
 
+<?php
+$a = "7 personas";
+$b = (integer) $a;
+$a = "9E3";
+$c = (double) $a;
+?>
 
 </body>
 
