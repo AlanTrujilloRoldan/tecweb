@@ -40,7 +40,45 @@
         <br> 
         La principal diferencia es que en el segundo bloque,$b deja de ser una variable independiente
         y se convierte en una referencia a $a, igualando su valor con el de $a y $c.
+        <br>
     </p>
+    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es">
+
+<head>
+    <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+    <title>Práctica PHP</title>
+</head>
+
+<body>
+    <?php
+    $a = "PHP 5";
+    echo $a.'<br />';
+
+    $z[] = &$a;
+    print_r($z);
+    echo '<br />';
+
+    $b = "5a versión de PHP";
+    echo $b.'<br />';
+
+    $c = (int)$b*10; 
+    echo $c.'<br />';
+
+    $a .= $b; 
+    echo $a.'<br />';
+
+    $b *= $c;
+    echo $b.'<br />';
+
+    $z[0] = "MySQL";
+    print_r($z);
+?>
+
+</body>
+
+</html>
+
 </body>
 
 </html>
