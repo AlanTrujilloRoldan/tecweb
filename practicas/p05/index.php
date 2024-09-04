@@ -94,6 +94,31 @@ $a = "9E3";
 echo $a.'<br />';
 $c = (double) $a;
 echo $c.'<br />';
+
+$a = "0";
+$b = "TRUE";
+$c = FALSE;
+$d = ($a OR $b);
+$e = ($a AND $c);
+$f = ($a XOR $b);
+
+echo '<br />';
+var_dump($a);
+echo '<br />';
+var_dump($b);
+echo '<br />';
+var_dump($c);
+echo '<br />';
+var_dump($d);
+echo '<br />';
+var_dump($e);
+echo '<br />';
+var_dump($f);
+
+echo '<br />';
+echo '<br />';
+echo var_export($c, true) . '<br />';
+echo var_export($e, true) . '<br />';
 ?>
 
 </body>
