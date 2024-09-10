@@ -11,28 +11,25 @@ include "funciones.php";
 <body>
     <h2>Ejercicio 1</h2>
     <p>Escribir programa para comprobar si un número es un múltiplo de 5 y 7</p>
-    <form action="index.php" method="get">
-        <input type="number" name="numero">
+    <form action=" " method="GET">
+        <input type="number" value="70" name="numero" required>
         <input type="submit" value="Validar">
+        <?php 
+            if(isset($_GET['numero'])) 
+                multiplo5y7($_GET['numero']);
+        ?>
     </form>
-    <?php
-        multiplo5y7($_GET['numero']);
-    ?>
 
-    <h2>Ejemplo de POST</h2>
-    <form action="http://localhost/tecweb/practicas/p04/index.php" method="post">
-        Name: <input type="text" name="name"><br>
-        E-mail: <input type="text" name="email"><br>
-        <input type="submit">
+    <h2>Ejercicio 2</h2>
+    <form action=" " method="POST">
+       <input type="submit" name="generar" value="Generar Matriz Aleatoria">
+        <?php 
+            if(isset($_POST['generar'])) 
+                matrizAleatoria(); 
+        ?>
     </form>
-    <br>
-    <?php
-        if(isset($_POST["name"]) && isset($_POST["email"]))
-        {
-            echo $_POST["name"];
-            echo '<br>';
-            echo $_POST["email"];
-        }
-    ?>
+
+    <h2>Ejercicio 3</h2>
+    <form action=" "></form>
 </body>
 </html>
