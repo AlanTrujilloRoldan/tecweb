@@ -1,3 +1,6 @@
+<?php
+include "funciones.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,18 +16,7 @@
         <input type="submit" value="Validar">
     </form>
     <?php
-        if(isset($_GET['numero']))
-        {
-            $num = $_GET['numero'];
-            if ($num%5==0 && $num%7==0)
-            {
-                echo '<h3>R= El número '.$num.' SÍ es múltiplo de 5 y 7.</h3>';
-            }
-            else
-            {
-                echo '<h3>R= El número '.$num.' NO es múltiplo de 5 y 7.</h3>';
-            }
-        }
+        multiplo5y7($_GET['numero']);
     ?>
 
     <h2>Ejemplo de POST</h2>
