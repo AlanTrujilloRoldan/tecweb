@@ -1,5 +1,6 @@
 
 <?php
+include "variables.php";
 
 
 function multiplo5y7($numero) {
@@ -87,5 +88,31 @@ function imprimirCodigoASCII() {
 
     foreach ($array as $k => $valor) {
         echo "<tr><td>$k</td><td>$valor</td></tr>";
+    }
+}
+
+function validarSexoEdad($edad,$sexo) {
+    $edadInt = (int)$edad;
+
+    if($sexo == "mujer" && $edadInt >= 18 && $edadInt <= 35) {
+        echo "<h3> R = Bienvenida, usted está en el rango de edad permitido. </h3>";
+    } else {
+        echo "<h3> R = Lo sentimos, no cumple con los requisitos. </h3>";
+    }
+}
+
+function buscarMatricula($matricula) {
+    global $vehiculos;
+    if(array_key_exists($matricula, $vehiculos)) {
+        echo "<h3> Detalles del Vehículo:</h3>";
+        $vehiculo = $vehiculos[$matricula];
+        echo "<strong>Marca: </strong>". $vehiculo['Auto']['marca'] ."<br>";
+        echo "<strong>Modelo: </strong>". $vehiculo['Auto']['modelo'] ."<br>";
+        echo "<strong>Tipo: </strong>". $vehiculo['Auto']['tipo'] ."<br>";
+        echo "<strong>Propietario: </strong>". $vehiculo['Propietario']['nombre'] ."<br>";
+        echo "<strong>Ciudad: </strong>". $vehiculo['Propietario']['ciudad'] ."<br>";
+        echo "<strong>Dirección: </strong>". $vehiculo['Propietario']['direccion'] ."<br>";
+    } else {
+        echo "<h3> No se encontró ningún vehículo con la matricula: $matricula </h3>";
     }
 }
