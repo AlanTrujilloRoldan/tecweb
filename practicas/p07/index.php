@@ -95,7 +95,6 @@ include "variables.php";
             echo "<br>";
             if (isset($_POST['verTodos'])) 
                 print_r($vehiculos);
-            
         ?>
     </form>
 
