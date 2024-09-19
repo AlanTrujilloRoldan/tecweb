@@ -1,36 +1,36 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es">
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es">
 
 <head>
-    <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+    <meta charset="utf-8">
     <title>Práctica 05</title>
 </head>
 
 <body>
     <?php
-    echo "La variable \$_myvar es válida porque respeta no empezar con un número" . '<br />';
-    echo "La variable \$_7myvar es válida porque respeta no empezar con un número" . '<br />';
-    echo "La variable myvar NO es válida porque no declara el inicio de la variable con \$" . '<br />';
-    echo "La variable \$var7 es válida porque respeta no empezar con un número" . '<br />';
-    echo "La variable \$_element1 es válida porque respeta no empezar con un número" . '<br />';
-    echo "La variable \$house*5 NO es válida porque contiene un carácter no permitido (*)" . '<br />';    
-
+    echo "La variable \$_myvar es válida porque respeta no empezar con un número" . '<br>';
+    echo "La variable \$_7myvar es válida porque respeta no empezar con un número" . '<br>';
+    echo "La variable myvar NO es válida porque no declara el inicio de la variable con \$" . '<br>';
+    echo "La variable \$var7 es válida porque respeta no empezar con un número" . '<br>';
+    echo "La variable \$_element1 es válida porque respeta no empezar con un número" . '<br>';
+    echo "La variable \$house*5 NO es válida porque contiene un carácter no permitido (*)" . '<br>';    
 
     $a = "ManejadorSQL";
     $b = 'MySQL';
     $c = &$a;
-    echo '<br />';
-    echo $a. '<br />';
-    echo $b. '<br />';
-    echo $c. '<br />';
+    echo '<br>';
+    echo $a . '<br>';
+    echo $b . '<br>';
+    echo $c . '<br>';
 
-    echo '<br />';
+    echo '<br>';
     $a = "PHP server";
     $b = &$a;
-    echo $a. '<br />';
-    echo $b. '<br />';
-    echo $c. '<br />';
+    echo $a . '<br>';
+    echo $b . '<br>';
+    echo $c . '<br>';
     ?>
+    
     <p>
         En el primer bloque, $c refencia a la variable $a, mientras que $b es una variable con un valor distinto 'MySQL'.
         Esto hace que cualquier cambio en $a se refleje en $c, pero no afecta a $b. 
@@ -38,107 +38,89 @@
         cambio en $a se refleja automáticamente en ambas, haciendo que las tres variables
         compartan el mismo valor "PHP server".
         <br> 
-        La principal diferencia es que en el segundo bloque,$b deja de ser una variable independiente
+        La principal diferencia es que en el segundo bloque, $b deja de ser una variable independiente
         y se convierte en una referencia a $a, igualando su valor con el de $a y $c.
-        <br>
     </p>
-    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es">
 
-<head>
-    <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
-    <title>Práctica PHP</title>
-</head>
-
-<body>
     <?php
     $a = "PHP 5";
-    echo $a.'<br />';
+    echo $a . '<br>';
 
     $z[] = &$a;
     print_r($z);
-    echo '<br />';
+    echo '<br>';
 
     $b = "5a versión de PHP";
-    echo $b.'<br />';
+    echo $b . '<br>';
 
-    $c = (int)$b*10; 
-    echo $c.'<br />';
+    $c = (int)$b * 10; 
+    echo $c . '<br>';
 
     $a .= $b; 
-    echo $a.'<br />';
+    echo $a . '<br>';
     
     $b *= $c;
-    echo $b.'<br />';
+    echo $b . '<br>';
 
     $z[0] = "MySQL";
     print_r($z);
 
-    echo '<br />';
-    echo '<br />';
-    echo "\$GLOBALS['a'] = " . $GLOBALS['a'] . " (" . gettype($GLOBALS['a']) . ")<br />";
-    echo "\$GLOBALS['b'] = " . $GLOBALS['b'] . " (" . gettype($GLOBALS['b']) . ")<br />";
-    echo "\$GLOBALS['c'] = " . $GLOBALS['c'] . " (" . gettype($GLOBALS['c']) . ")<br />";
+    echo '<br><br>';
+    echo "\$GLOBALS['a'] = " . $GLOBALS['a'] . " (" . gettype($GLOBALS['a']) . ")<br>";
+    echo "\$GLOBALS['b'] = " . $GLOBALS['b'] . " (" . gettype($GLOBALS['b']) . ")<br>";
+    echo "\$GLOBALS['c'] = " . $GLOBALS['c'] . " (" . gettype($GLOBALS['c']) . ")<br>";
     echo "\$GLOBALS['z'] = ";
     print_r($GLOBALS['z']);
-    echo " (" . gettype($GLOBALS['z']) . ")<br />";
-    echo '<br />';
-?>
+    echo " (" . gettype($GLOBALS['z']) . ")<br>";
+    echo '<br>';
+    ?>
 
-<?php
-$a = "7 personas";
-echo $a.'<br />';
-$b = (integer) $a;
-echo $b.'<br />';
-$a = "9E3";
-echo $a.'<br />';
-$c = (double) $a;
-echo $c.'<br />';
+    <?php
+    $a = "7 personas";
+    echo $a . '<br>';
+    $b = (integer)$a;
+    echo $b . '<br>';
+    $a = "9E3";
+    echo $a . '<br>';
+    $c = (double)$a;
+    echo $c . '<br>';
 
-$a = "0";
-$b = "TRUE";
-$c = FALSE;
-$d = ($a OR $b);
-$e = ($a AND $c);
-$f = ($a XOR $b);
+    $a = "0";
+    $b = "TRUE";
+    $c = FALSE;
+    $d = ($a OR $b);
+    $e = ($a AND $c);
+    $f = ($a XOR $b);
 
-echo '<br />';
-var_dump($a);
-echo '<br />';
-var_dump($b);
-echo '<br />';
-var_dump($c);
-echo '<br />';
-var_dump($d);
-echo '<br />';
-var_dump($e);
-echo '<br />';
-var_dump($f);
+    echo '<br>';
+    var_dump($a);
+    echo '<br>';
+    var_dump($b);
+    echo '<br>';
+    var_dump($c);
+    echo '<br>';
+    var_dump($d);
+    echo '<br>';
+    var_dump($e);
+    echo '<br>';
+    var_dump($f);
 
-echo '<br />';
-echo '<br />';
-echo var_export($c, true) . '<br />';
-echo var_export($e, true) . '<br />';
+    echo '<br><br>';
+    echo var_export($c, true) . '<br>';
+    echo var_export($e, true) . '<br>';
 
-echo '<br />';
-$apacheVersion = $_SERVER['SERVER_SOFTWARE'];
-$phpVersion = phpversion();
-echo $apacheVersion;
-echo $phpVersion;
+    echo '<br>';
+    $apacheVersion = $_SERVER['SERVER_SOFTWARE'];
+    $phpVersion = phpversion();
+    echo $apacheVersion . '<br>';
+    echo $phpVersion . '<br>';
 
-echo '<br />';
-$serverOS = PHP_OS;
-echo $serverOS;
+    $serverOS = PHP_OS;
+    echo $serverOS . '<br>';
 
-echo '<br />';
-$lenguajeBuscador = $_SERVER['HTTP_ACCEPT_LANGUAGE'];
-echo $lenguajeBuscador;
-?>
-
-</body>
-
-</html>
-
+    $lenguajeBuscador = $_SERVER['HTTP_ACCEPT_LANGUAGE'];
+    echo $lenguajeBuscador . '<br>';
+    ?>
 </body>
 
 </html>
