@@ -7,6 +7,7 @@
 </head>
 
 <body>
+    
     <p>
         <?php
         echo "La variable \$_myvar es válida porque respeta no empezar con un número.<br />";
@@ -37,12 +38,13 @@
     </p>
 
     <p>
-        En el primer bloque, $c refencia a la variable $a, mientras que $b es una variable con un valor distinto 'MySQL'.
-        Esto hace que cualquier cambio en $a se refleje en $c, pero no afecta a $b. 
-        En el segundo bloque, tanto $b como $c son referencias a $a, lo que significa que cualquier 
+        En el primer bloque, $c refencia a la variable $a, mientras que $b es una variable con un valor distinto
+        'MySQL'.
+        Esto hace que cualquier cambio en $a se refleje en $c, pero no afecta a $b.
+        En el segundo bloque, tanto $b como $c son referencias a $a, lo que significa que cualquier
         cambio en $a se refleja automáticamente en ambas, haciendo que las tres variables
         compartan el mismo valor "PHP server".
-        <br /> 
+        <br />
         La principal diferencia es que en el segundo bloque, $b deja de ser una variable independiente
         y se convierte en una referencia a $a, igualando su valor con el de $a y $c.
     </p>
@@ -59,12 +61,12 @@
         $b = "5a versión de PHP";
         echo $b . '<br />';
 
-        $c = (int)$b * 10; 
+        $c = (int) $b * 10;
         echo $c . '<br />';
 
-        $a .= $b; 
+        $a .= $b;
         echo $a . '<br />';
-        
+
         $b *= $c;
         echo $b . '<br />';
 
@@ -85,18 +87,18 @@
         <?php
         $a = "7 personas";
         echo $a . '<br />';
-        $b = (integer)$a;
+        $b = (integer) $a;
         echo $b . '<br />';
         $a = "9E3";
         echo $a . '<br />';
-        $c = (double)$a;
+        $c = (double) $a;
         echo $c . '<br />';
 
         $a = "0";
         $b = "TRUE";
         $c = FALSE;
-        $d = ($a OR $b);
-        $e = ($a AND $c);
+        $d = ($a or $b);
+        $e = ($a and $c);
         $f = ($a XOR $b);
 
         echo '<br />';
@@ -128,6 +130,10 @@
         $lenguajeBuscador = $_SERVER['HTTP_ACCEPT_LANGUAGE'];
         echo $lenguajeBuscador . '<br />';
         ?>
+    </p>
+    <p>
+        <a href="https://validator.w3.org/markup/check?uri=referer"><img src="https://www.w3.org/Icons/valid-xhtml11"
+                alt="Valid XHTML 1.1" height="31" width="88" /></a>
     </p>
 </body>
 
