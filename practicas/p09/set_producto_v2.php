@@ -61,8 +61,12 @@ $stmt->close();
             $imagen_ruta = $archivoImg; // Esta será la ruta que se almacenará: "img/nombreimagen.png"
 
             // Insertar los datos en SQL
-            $SQLquery = "INSERT INTO productos (nombre, marca, modelo, precio, unidades, detalles, imagen) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            $SQLquery = "INSERT INTO productos (nombre, marca, modelo, precio, unidades, detalles, imagen, eliminado) VALUES (?, ?, ?, ?, ?, ?, ?, 0)";
             $insertStmt = $link->prepare($SQLquery);
+            if ($insertStmt === false) {
+                die('Error en la preparación de la consulta: ' . $link->error);
+            }
+
             $insertStmt->bind_param("sssdiss", $nombre, $marca, $modelo, $precio, $unidades, $detalles, $imagen_ruta);
 
             if ($insertStmt->execute()) {
@@ -75,7 +79,7 @@ $stmt->close();
                 echo "<p><strong>Unidades:</strong> $unidades</p>";
                 echo "<p><strong>Detalles:</strong> $detalles</p>";
             } else {
-                echo 'El Producto no pudo ser insertado';
+                echo 'El Producto no pudo ser insertado: ' . $insertStmt->error;
             }
             $insertStmt->close(); // Cerrar la declaración de inserción
         } else {
