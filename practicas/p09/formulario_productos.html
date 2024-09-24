@@ -3,37 +3,37 @@
 
 <head>
     <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
-    <title>Práctica 05</title>
+    <title>Práctica 09</title>
 </head>
 
 <body>
     <h1>Formulario Productos</h1>
 
-    <form action="set_producto_v2.php" method="post">
+    <form action="set_producto_v2.php" method="post" enctype="multipart/form-data">
         <fieldset>
             <legend>Información Producto</legend>
             <label for="nombre">Nombre:</label><br>
-            <input type="text" id="nombre" name="nombre" required><br><br>
+            <input type="text" id="nombre" name="nombre" required /><br /><br />
 
             <label for="marca">Marca:</label><br>
-            <input type="text" id="marca" name="marca" required><br><br>
+            <input type="text" id="marca" name="marca" required /><br /><br />
 
             <label for="modelo">Modelo:</label><br>
-            <input type="text" id="modelo" name="modelo" required><br><br>
+            <input type="text" id="modelo" name="modelo" required /><br /><br />
 
             <label for="precio">Precio:</label><br>
-            <input type="number" id="precio" name="precio" step="0.01" required><br><br>
+            <input type="number" id="precio" name="precio" step="0.01" required /><br /><br />
 
             <label for="unidades">Unidades:</label><br>
-            <input type="number" id="unidades" name="unidades" required><br><br>
+            <input type="number" id="unidades" name="unidades" required /><br /><br />
 
             <label for="detalles">Detalles:</label><br>
-            <textarea id="detalles" name="detalles" rows="4" cols="50" required></textarea><br><br>
+            <textarea id="detalles" name="detalles" rows="4" cols="50" required></textarea><br /><br />
 
             <label for="imagen">Subir imagen:</label><br>
-            <input type="file" id="imagen" name="imagen" accept="image/png" required><br><br>
+            <input type="file" id="imagen" name="imagen" accept="image/png" required /><br /><br />
 
-            <input type="submit" value="Enviar">
+            <input type="submit" value="Enviar" />
         </fieldset>
     </form>
 
