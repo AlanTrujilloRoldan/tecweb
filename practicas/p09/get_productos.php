@@ -24,11 +24,11 @@
 		if ($link->connect_errno) 
 		{
 			die('Falló la conexión: '.$link->connect_error.'<br/>');
-			//exit();
 		}
 
 		/** Crear una tabla que no devuelve un conjunto de resultados */
-		if ( $result = $link->query("SELECT * FROM productos WHERE unidades <= $tope") ) 
+		// Modifica la consulta para incluir una condición para no eliminar productos
+		if ( $result = $link->query("SELECT * FROM productos WHERE unidades <= $tope AND eliminado = 0") ) 
 		{
             /** Se extraen las tuplas obtenidas de la consulta */
 			$row = $result->fetch_all(MYSQLI_ASSOC);
@@ -81,20 +81,15 @@
 						<td><?= $value['precio'] ?></td>
 						<td><?= $value['unidades'] ?></td>
 						<td><?= $value['detalles'] ?></td>
-						<td><img src=<?= $value['imagen'] ?> ></td>
+						<td><img src="<?= $value['imagen'] ?>" alt="<?= $value['nombre'] ?>" /></td>
 					</tr>
 					<?php endforeach; ?>
 				</tbody>
 			</table>
 		<?php elseif(!empty($id)) : ?>
-
 			 <script>
                 alert('El ID del producto no existe');
              </script>
-
 		<?php endif; ?>
 	</body>
 </html>
-
-get_producto_xhtml.php
-Mostrando get_producto_xhtml.php
