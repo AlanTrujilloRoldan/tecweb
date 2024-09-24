@@ -62,6 +62,10 @@ $stmt->close();
 
             // Insertar los datos en SQL
             $SQLquery = "INSERT INTO productos (nombre, marca, modelo, precio, unidades, detalles, imagen, eliminado) VALUES (?, ?, ?, ?, ?, ?, ?, 0)";
+
+            //$SQLquery = "INSERT INTO productos VALUES (NULL, '$nombre', '$marca', '$modelo', $precio, '$detalles', $unidades, '$imagen', $eliminado)";
+
+
             $insertStmt = $link->prepare($SQLquery);
             if ($insertStmt === false) {
                 die('Error en la preparación de la consulta: ' . $link->error);
