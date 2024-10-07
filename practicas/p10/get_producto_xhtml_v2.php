@@ -108,49 +108,55 @@ if (!empty($tope)) {
 		function send2form(nombre, marca, modelo, precio, unidades, detalles) {
 			var form = document.createElement("form");
 
-                var nombreIn = document.createElement("input");
-                nombreIn.type = 'text';
-                nombreIn.name = 'nombre';
-                nombreIn.value = nombre;
-                form.appendChild(nombreIn);
+			//nombre
+			var nombreIn = document.createElement("input");
+			nombreIn.type = 'text';
+			nombreIn.name = 'nombre';
+			nombreIn.value = nombre;
+			form.appendChild(nombreIn);
 
-                var marcaIn = document.createElement("input");
-                marcaIn.type = 'text';
-                marcaIn.name = 'marca';
-                marcaIn.value = marca;
-                form.appendChild(marcaIn);
+			//marca
+			var marcaIn = document.createElement("input");
+			marcaIn.type = 'text';
+			marcaIn.name = 'marca';
+			marcaIn.value = marca;
+			form.appendChild(marcaIn);
 
-				var modeloIn = document.createElement("input");
-                modeloIn.type = 'text';
-                modeloIn.name = 'modelo';
-                modeloIn.value = modelo;
-                form.appendChild(modeloIn);
+			//modelo
+			var modeloIn = document.createElement("input");
+			modeloIn.type = 'text';
+			modeloIn.name = 'modelo';
+			modeloIn.value = modelo;
+			form.appendChild(modeloIn);
 
-				var precioIn = document.createElement("input");
-                precioIn.type = 'text';
-                precioIn.name = 'precio';
-                precioIn.value = precio;
-                form.appendChild(precioIn);
+			//precio
+			var precioIn = document.createElement("input");
+			precioIn.type = 'text';
+			precioIn.name = 'precio';
+			precioIn.value = precio;
+			form.appendChild(precioIn);
 
-				var unidadesIn = document.createElement("input");
-                unidadesIn.type = 'text';
-                unidadesIn.name = 'unidades';
-                unidadesIn.value = unidades;
-                form.appendChild(unidadesIn);
+			//unidades
+			var unidadesIn = document.createElement("input");
+			unidadesIn.type = 'text';
+			unidadesIn.name = 'unidades';
+			unidadesIn.value = unidades;
+			form.appendChild(unidadesIn);
 
-				var detallesIn = document.createElement("input");
-                detallesIn.type = 'text';
-                detallesIn.name = 'detalles';
-                detallesIn.value = detalles;
-                form.appendChild(detallesIn);
+			//detalles
+			var detallesIn = document.createElement("input");
+			detallesIn.type = 'text';
+			detallesIn.name = 'detalles';
+			detallesIn.value = detalles;
+			form.appendChild(detallesIn);
 
-                console.log(form);
+			console.log(form);
 
-                form.method = 'POST';
-                form.action = 'http://localhost/tecweb/practicas/p10/formulario_productos_v2.php';  
+			form.method = 'POST';
+			form.action = 'http://localhost/tecweb/practicas/p10/formulario_productos_v2.php';
 
-                document.body.appendChild(form);
-                form.submit();
+			document.body.appendChild(form);
+			form.submit();
 		}
 	</script>
 </body>

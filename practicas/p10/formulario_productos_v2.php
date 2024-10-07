@@ -3,13 +3,13 @@
 
 <head>
     <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
-    <title>Práctica 09</title>
+    <title>Práctica</title>
     <script src="./src/main.js"></script>
 </head>
 
 <body>
     <h1>Formulario Productos</h1>
-
+    <?php print_r($_POST);?>
     <form action=" " method="post" enctype="multipart/form-data" onsubmit="verificarEntImagen()">
         <fieldset>
             <legend>Información Producto</legend>
