@@ -55,7 +55,7 @@ if (!empty($tope)) {
 
 			// Mostrar datos en una alerta
 			alert("Nombre: " + nombre + "\nMarca: " + marca + "\nModelo: " + modelo);
-			send2form(nombre, marca, modelo, precio, unidades, detalles);
+			send2form(rowId, nombre, marca, modelo, precio, unidades, detalles);
 		}
 	</script>
 </head>
@@ -105,8 +105,15 @@ if (!empty($tope)) {
 	<?php endif; ?>
 
 	<script>
-		function send2form(nombre, marca, modelo, precio, unidades, detalles) {
+		function send2form(rowId, nombre, marca, modelo, precio, unidades, detalles) {
 			var form = document.createElement("form");
+
+			//id
+			var idIn = document.createElement("input");
+			idIn.type = 'text';
+			idIn.name = 'id';
+			idIn.value = rowId;
+			form.appendChild(idIn);
 
 			//nombre
 			var nombreIn = document.createElement("input");
@@ -153,7 +160,7 @@ if (!empty($tope)) {
 			console.log(form);
 
 			form.method = 'POST';
-			form.action = 'http://localhost/tecweb/practicas/p10/formulario_productos_v2.php';
+			form.action = 'http://localhost/tecweb/practicas/p10/formulario_productos_v3.php';
 
 			document.body.appendChild(form);
 			form.submit();
