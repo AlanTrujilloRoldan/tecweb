@@ -16,8 +16,9 @@
 
 	if (!empty($tope))
 	{
+		
 		/** SE CREA EL OBJETO DE CONEXION */
-		@$link = new mysqli('localhost', 'root', '12345678a', 'marketzone');
+		@$link = new mysqli('localhost', 'root', '12345678a', 'marketzonetest');
         /** NOTA: con @ se suprime el Warning para gestionar el error por medio de código */
 
 		/** comprobar la conexión */
@@ -72,6 +73,7 @@
 					<th scope="col">Unidades</th>
 					<th scope="col">Detalles</th>
 					<th scope="col">Imagen</th>
+					<th scope="col">Editar</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -85,6 +87,9 @@
 						<td><?= $value['unidades'] ?></td>
 						<td><?= $value['detalles'] ?></td>
 						<td><img src=<?= $value['imagen'] ?> ></td>
+						<td>
+							<a href="formulario_productos_v2.html?id=<?= $value['id'] ?>">Modificar</a>
+						</td>
 					</tr>
 					<?php endforeach; ?>
 				</tbody>
