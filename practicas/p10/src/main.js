@@ -41,8 +41,8 @@ function verificarEntDetalles(control) {
 }
 
 function verificarEntUnidades(control) {
-    if(document.getElementById('unidades').value <= 0)
-        alert('Debes de ingresar un valor valido');
+    if(document.getElementById('unidades').value < -1)
+        alert('Debes de ingresar un valor mayor o igual a 0');
 }
 
 function verificarEntImagen(control) {
