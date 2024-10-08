@@ -46,6 +46,7 @@ if ($imagen == '') {
 }
 
 if (mysqli_query($link, $sql)) {
+    header("Location: get_producto_xhtml_v2.php?tope=1800");
     echo "Registro actualizado.";
 } else {
     echo "ERROR: No se ejecuto $sql. " . mysqli_error($link);

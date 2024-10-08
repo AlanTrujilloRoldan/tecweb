@@ -105,7 +105,7 @@ if (!empty($tope)) {
 	<?php endif; ?>
 
 	<script>
-		function send2form(nombre, marca, modelo, precio, unidades, detalles) {
+		function send2form(rowId, nombre, marca, modelo, precio, unidades, detalles) {
 			var form = document.createElement("form");
 
 			//id
@@ -114,7 +114,7 @@ if (!empty($tope)) {
 			idIn.name = 'id';
 			idIn.value = rowId;
 			form.appendChild(idIn);
-			
+
 			//nombre
 			var nombreIn = document.createElement("input");
 			nombreIn.type = 'text';
