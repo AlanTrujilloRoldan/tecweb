@@ -23,11 +23,10 @@ $(document).ready(function () {
   $('#product-result').hide();
   fetchProducts();
 
-  //Busqueda de los productos
-  //Pendiente (Mostrar en la lista normal??)
+  // Búsqueda de los productos
   $('#search').keyup(function (e) {
-    if ($('#search').val()) {
-      let search = $('#search').val();
+    let search = $('#search').val();
+    if (search) {
       $.ajax({
         url: './backend/product-search.php',
         type: 'GET',
@@ -36,18 +35,43 @@ $(document).ready(function () {
           let products = JSON.parse(response);
           let template = '';
 
-          products.forEach(product => {
-            template += `<li>
-           ${product.nombre}
-          </li>`;
-          });
+          // Comprobar si hay productos
+          if (products.length > 0) {
+            products.forEach(product => {
+              template += `
+                          <tr productId="${product.id}">
+                              <td>${product.id}</td>
+                              <td>${product.nombre}</td>
+                              <td>
+                                  <ul>
+                                      <li>Precio: ${product.precio}</li>
+                                      <li>Unidades: ${product.unidades}</li>
+                                      <li>Modelo: ${product.modelo}</li>
+                                      <li>Marca: ${product.marca}</li>
+                                      <li>Detalles: ${product.detalles}</li>
+                                  </ul>
+                              </td>
+                              <td>
+                                  <button class="product-delete btn btn-danger"> 
+                                      Delete 
+                                  </button>
+                              </td>
+                          </tr>`;
+            });
+          } else {
+            template = '<tr><td colspan="4">No se encontraron productos.</td></tr>';
+          }
 
-          $('#container').html(template);
+          $('#products').html(template); // Actualizar la tabla con los resultados de búsqueda
           $('#product-result').show();
         }
-      })
+      });
+    } else {
+      fetchProducts(); // Volver a cargar todos los productos si no hay búsqueda
+      $('#product-result').hide();
     }
-  })
+  });
+
 
   //Pendiente
   //Mandar un JSON o un Archivo a Product-add
@@ -81,7 +105,6 @@ $(document).ready(function () {
       type: 'GET',
       success: function (response) {
         let products = JSON.parse(response);
-        console.log(products);
         let template = '';
         products.forEach(product => {
           template += `
