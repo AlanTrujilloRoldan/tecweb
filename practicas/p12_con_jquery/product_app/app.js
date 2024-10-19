@@ -85,22 +85,31 @@ $(document).ready(function () {
         let template = '';
         products.forEach(product => {
           template += `
-          <tr productId="${product.id}">
-            <td>${product.id}</td>
-            <td>${product.nombre}</td>
-            <td>${product.detalles}</td>
-            <td>
-              <button class="product-delete btn btn-danger"> 
-                Delete 
-              </button>
-            </td>
-          </tr>`;
+                <tr productId="${product.id}">
+                    <td>${product.id}</td>
+                    <td>${product.nombre}</td>
+                    <td>
+                        <ul>
+                            <li>Precio: ${product.precio}</li>
+                            <li>Unidades: ${product.unidades}</li>
+                            <li>Modelo: ${product.modelo}</li>
+                            <li>Marca: ${product.marca}</li>
+                            <li>Detalles: ${product.detalles}</li>
+                        </ul>
+                    </td>
+                    <td>
+                        <button class="product-delete btn btn-danger"> 
+                            Delete 
+                        </button>
+                    </td>
+                </tr>`;
         });
 
         $('#products').html(template);
       }
     });
   }
+
 
   $(document).on('click', '.product-delete', function () {
     if (confirm('¿Estas seguro que deseas eliminar el elemento?')) {
