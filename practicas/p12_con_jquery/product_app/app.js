@@ -102,13 +102,14 @@ $(document).ready(function () {
     });
   }
 
-  $(document).on('click', '.product-delete', function() {
-    let element = $(this)[0].parentElement.parentElement;
-    let id = $(element).attr('productId');
-    $.get('product-delete.php', {id}, function (response) {
-      console.log(response);
-      
-    })
-    
+  $(document).on('click', '.product-delete', function () {
+    if (confirm('¿Estas seguro que deseas eliminar el elemento?')) {
+      let element = $(this)[0].parentElement.parentElement;
+      let id = $(element).attr('productId');
+      $.get('./backend/product-delete.php', { id }, function (response) {
+        fetchProducts();
+      })
+    }
+
   })
 });
