@@ -78,24 +78,43 @@ $(document).ready(function () {
   //Mandar un JSON o un Archivo a Product-add
   //Agregar fetchProducts() cuando se agreguen satisfactoriamente
   $('#product-form').submit(function (e) {
-    const postData = {
+    e.preventDefault();
+    const data = {
       name: $('#name').val(),
       description: $('#description').val(),
     }
-    console.log(postData);
+    // Convertir la descripción de JSON a objeto
+    var descripcionObj = JSON.parse(data.description);
 
-    /*
-    // SE OBTIENE DESDE EL FORMULARIO EL JSON A ENVIAR
-    var productoJsonString = document.getElementById('description').value;
-    // SE CONVIERTE EL JSON DE STRING A OBJETO
-    var finalJSON = JSON.parse(productoJsonString);
-    // SE AGREGA AL JSON EL NOMBRE DEL PRODUCTO
-    finalJSON['nombre'] = document.getElementById('name').value;
-    // SE OBTIENE EL STRING DEL JSON FINAL
-    productoJsonString = JSON.stringify(finalJSON,null,2);
+    // Crear un objeto combinando ambos
+    var productoData = {
+      nombre: data.name,
+      marca: descripcionObj.marca,
+      modelo: descripcionObj.modelo,
+      precio: descripcionObj.precio,
+      detalles: descripcionObj.detalles,
+      unidades: descripcionObj.unidades,
+      imagen: descripcionObj.imagen
+    };
 
-    */
-    e.preventDefault();
+    // Enviar los datos a PHP usando AJAX
+    $.ajax({
+      url: './backend/product-add.php', // Asegúrate de cambiar esta ruta
+      type: 'POST', // Método de envío
+      data: JSON.stringify(productoData), // Convertir el objeto a JSON
+      contentType: 'application/json', // Tipo de contenido
+      success: function (response) {
+        fetchProducts();
+        $('#container').html('Status: Success <br /> Message: Producto agregado');
+        $('#product-result').show();
+      },
+      error: function (jqXHR, textStatus, errorThrown) {
+        // Manejar errores
+        console.error('Error: ' + textStatus, errorThrown);
+        $('#container').html('Status: Failed <br /> Message: Ya existe un producto con ese nombre');
+        $('#product-result').show();
+      }
+    });
 
   });
 
@@ -137,7 +156,7 @@ $(document).ready(function () {
 
   //Eliminar Elementos
   $(document).on('click', '.product-delete', function () {
-    
+
     if (confirm('¿Estas seguro que deseas eliminar el elemento?')) {
       let element = $(this)[0].parentElement.parentElement;
       let id = $(element).attr('productId');
@@ -148,7 +167,7 @@ $(document).ready(function () {
       })
 
     } else {
-      $('#product-result').hide();  
+      $('#product-result').hide();
     }
 
   })
