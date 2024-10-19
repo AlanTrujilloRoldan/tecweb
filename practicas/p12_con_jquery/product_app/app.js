@@ -74,9 +74,7 @@ $(document).ready(function () {
     }
   })
 
-  //Pendiente
-  //Mandar un JSON o un Archivo a Product-add
-  //Agregar fetchProducts() cuando se agreguen satisfactoriamente
+  //Agregar productos
   $('#product-form').submit(function (e) {
     e.preventDefault();
     const data = {
@@ -131,7 +129,9 @@ $(document).ready(function () {
           template += `
                 <tr productId="${product.id}">
                     <td>${product.id}</td>
-                    <td>${product.nombre}</td>
+                    <td>
+                      <a href="#" class="product-item">${product.nombre}</a>
+                    </td>
                     <td>
                         <ul>
                             <li>Precio: ${product.precio}</li>
@@ -170,5 +170,27 @@ $(document).ready(function () {
       $('#product-result').hide();
     }
 
+  })
+
+  //Modificar
+  $(document).on('click', '.product-item', function () {
+    let element = $(this)[0].parentElement.parentElement;
+    let id = $(element).attr('productId');
+    $.get('./backend/product-single.php', { id }, function (response) {
+      let template = '';
+      const product = JSON.parse(response);
+
+      template += 
+        `{
+        "precio": ${product.precio},
+        "unidades": ${product.unidades},
+        "modelo": "${product.modelo}",
+        "marca": "${product.marca}",
+        "detalles": "${product.detalles}",
+        "imagen": "img/predeterminado.png"
+        }`
+      $('#description').val(template);
+      $('#name').val(product.nombre);
+    })
   })
 });
