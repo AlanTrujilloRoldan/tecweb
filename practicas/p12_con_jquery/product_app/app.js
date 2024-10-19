@@ -68,6 +68,9 @@ $(document).ready(function () {
           $('#product-result').show();
         }
       })
+    } else {
+      fetchProducts();
+      $('#product-result').hide();
     }
   })
 
@@ -132,14 +135,20 @@ $(document).ready(function () {
     });
   }
 
-
+  //Eliminar Elementos
   $(document).on('click', '.product-delete', function () {
+    
     if (confirm('¿Estas seguro que deseas eliminar el elemento?')) {
       let element = $(this)[0].parentElement.parentElement;
       let id = $(element).attr('productId');
       $.get('./backend/product-delete.php', { id }, function (response) {
         fetchProducts();
+        $('#container').html('Status: Success <br /> Message: Producto eliminado');
+        $('#product-result').show();
       })
+
+    } else {
+      $('#product-result').hide();  
     }
 
   })
