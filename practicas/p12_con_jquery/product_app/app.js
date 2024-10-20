@@ -81,6 +81,7 @@ $(document).ready(function () {
     const data = {
       name: $('#name').val(),
       description: $('#description').val(),
+      id: $('#productId').val()
     }
 
     let url = edit === false ? './backend/product-add.php' : './backend/product-edit.php';
@@ -90,6 +91,7 @@ $(document).ready(function () {
 
     // Crear un objeto combinando ambos
     var productoData = {
+      id: data.id,
       nombre: data.name,
       marca: descripcionObj.marca,
       modelo: descripcionObj.modelo,
@@ -105,7 +107,7 @@ $(document).ready(function () {
       type: 'POST', // Método de envío
       data: JSON.stringify(productoData), // Convertir el objeto a JSON
       contentType: 'application/json', // Tipo de contenido
-      success: function (response) {
+      success: function (response) {      
         let respuesta = JSON.parse(response);
         let template = '';
         template += `
@@ -166,7 +168,13 @@ $(document).ready(function () {
       let id = $(element).attr('productId');
       $.get('./backend/product-delete.php', { id }, function (response) {
         fetchProducts();
-        $('#container').html('Status: Success <br /> Message: Producto eliminado');
+        let respuesta = JSON.parse(response);
+        let template = '';
+        template += `
+             Status: ${respuesta.status} <br />
+             Message: ${respuesta.message} <br />
+            `;
+        $('#container').html(template);
         $('#product-result').show();
       })
 
@@ -195,6 +203,7 @@ $(document).ready(function () {
         }`
       $('#description').val(template);
       $('#name').val(product.nombre);
+      $('#productId').val(product.id)
       edit = true;
     })
   })

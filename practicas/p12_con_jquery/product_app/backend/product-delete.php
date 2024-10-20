@@ -12,7 +12,7 @@
         // SE REALIZA LA QUERY DE BÚSQUEDA Y AL MISMO TIEMPO SE VALIDA SI HUBO RESULTADOS
         $sql = "UPDATE productos SET eliminado=1 WHERE id = {$id}";
         if ( $conexion->query($sql) ) {
-            $data['status'] =  "success";
+            $data['status'] =  "Success";
             $data['message'] =  "Producto eliminado";
 		} else {
             $data['message'] = "ERROR: No se ejecuto $sql. " . mysqli_error($conexion);
