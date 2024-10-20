@@ -20,6 +20,7 @@ function init() {
 }
 
 $(document).ready(function () {
+  let edit = false;
   $('#product-result').hide();
   fetchProducts();
 
@@ -81,6 +82,9 @@ $(document).ready(function () {
       name: $('#name').val(),
       description: $('#description').val(),
     }
+
+    let url = edit === false ? './backend/product-add.php' : './backend/product-edit.php';
+
     // Convertir la descripción de JSON a objeto
     var descripcionObj = JSON.parse(data.description);
 
@@ -97,20 +101,20 @@ $(document).ready(function () {
 
     // Enviar los datos a PHP usando AJAX
     $.ajax({
-      url: './backend/product-add.php', // Asegúrate de cambiar esta ruta
+      url: url,
       type: 'POST', // Método de envío
       data: JSON.stringify(productoData), // Convertir el objeto a JSON
       contentType: 'application/json', // Tipo de contenido
       success: function (response) {
+        let respuesta = JSON.parse(response);
+        let template = '';
+        template += `
+             Status: ${respuesta.status} <br />
+             Message: ${respuesta.message} <br />
+            `;
+        $('#container').html(template);
+        $('#product-result').show();
         fetchProducts();
-        $('#container').html('Status: Success <br /> Message: Producto agregado');
-        $('#product-result').show();
-      },
-      error: function (jqXHR, textStatus, errorThrown) {
-        // Manejar errores
-        console.error('Error: ' + textStatus, errorThrown);
-        $('#container').html('Status: Failed <br /> Message: Ya existe un producto con ese nombre');
-        $('#product-result').show();
       }
     });
 
@@ -180,7 +184,7 @@ $(document).ready(function () {
       let template = '';
       const product = JSON.parse(response);
 
-      template += 
+      template +=
         `{
         "precio": ${product.precio},
         "unidades": ${product.unidades},
@@ -191,6 +195,7 @@ $(document).ready(function () {
         }`
       $('#description').val(template);
       $('#name').val(product.nombre);
+      edit = true;
     })
   })
 });

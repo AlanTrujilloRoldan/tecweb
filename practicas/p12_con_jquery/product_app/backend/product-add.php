@@ -4,7 +4,7 @@
     // SE OBTIENE LA INFORMACIÓN DEL PRODUCTO ENVIADA POR EL CLIENTE
     $producto = file_get_contents('php://input');
     $data = array(
-        'status'  => 'error',
+        'status'  => 'Error',
         'message' => 'Ya existe un producto con ese nombre'
     );
     if(!empty($producto)) {
