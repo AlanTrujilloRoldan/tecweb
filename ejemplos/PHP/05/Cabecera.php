@@ -7,6 +7,6 @@ class Cabecera {
 
     public function graficar() {
         $estilo = 'text-align: center';
-        echo '<h1> style ="'.$estilo.'">'.$this->titulo.'</h1>';
+        echo '<h1 style ="'.$estilo.'">'.$this->titulo.'</h1>';
     }
 }
