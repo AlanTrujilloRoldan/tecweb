@@ -33,7 +33,7 @@ class Cabecera2 {
         $estilo = 'font-size: 40; text-align: '.$this->ubicacion;
         echo '<div style="'.$estilo.'">';
         echo '<h4>';
-        echo '<a href"'.$this->enlace.'">'.$this->titulo.'</a>';
+        echo '<a href="'.$this->enlace.'">'.$this->titulo.'</a>';
         echo '</h4>';
         echo '</div>';
     }

@@ -9,12 +9,10 @@
 
 <body>
     <?php
-    use EJEMPLOS\POO\Cabecera as Cabecera;
+    use EJEMPLOS\POO\Cabecera2 as Cabecera;
     require_once __DIR__ . '/Cabecera.php';
-    $cab = new Cabecera('El rincon del programador','center');
-
-    use EJEMPLOS\POO\Cabecera2 as Cabecera2;
-    $cab2 = new Cabecera2('El no rincon del no programador','left','www.google.com');
+    $cab = new Cabecera('El rincon del programador','center','https://www.google.com');
+    $cab->graficar();
     ?>
 </body>
 </html>
