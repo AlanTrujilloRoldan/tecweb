@@ -18,10 +18,51 @@ $(document).ready(function () {
   $('#brand-error').hide();
   $('#model-error').hide();
   $('#image-error').hide();
+  $('#name-valid').hide();
   fetchProducts();
 
-  //Busqueda de los productos
-  //Pendiente (Mostrar en la lista normal?? SI)
+  // Búsqueda de los productos
+  $('#name').keyup(function (e) {
+    let search = $('#name').val();
+
+    // Ocultar el mensaje si el campo de búsqueda está vacío
+    if (search === '') {
+      $('#name-valid').hide();
+      return;
+    }
+
+    $.ajax({
+      url: './backend/product-search.php',
+      type: 'GET',
+      data: { search },
+      success: function (response) {
+        let result = JSON.parse(response);
+
+        $('#name-valid').hide();
+
+        // Aquí usamos equalProducts como una función asíncrona
+        equalProducts(search).then(exists => {
+          if (exists) {
+            $('#name-valid')
+              .html('<strong>El artículo ya existe</strong>')
+              .css('background-color', 'red') // Cambia el fondo a rojo
+              .show();
+          } else {
+            $('#name-valid')
+              .html('<strong>El artículo no existe</strong>')
+              .css('background-color', 'green') // Cambia el fondo a rojo
+              .show();
+          }
+        }).catch(error => {
+          console.error('Error en la verificación del producto:', error);
+        });
+      }
+    });
+  });
+
+
+
+
   $('#search').keyup(function (e) {
     if ($('#search').val()) {
       let search = $('#search').val();
@@ -71,64 +112,82 @@ $(document).ready(function () {
     }
   })
 
-  //Agregar productos
+  // Agregar productos
   $('#product-form').submit(function (e) {
-    e.preventDefault();
-    let nombreValido = verficarEntNombre();
-    let detallesValido = verificarEntDetalles();
-    let imagenValido = verificarEntImagen();
-    let marcaValido = verificarEntMarca();
-    let modeloValido = verificarEntModelo();
-    let precioValido = verificarEntPrecio();
-    let unidadesValido = verificarEntUnidades();
+    e.preventDefault(); // Evitar el envío del formulario por defecto
 
-    if (nombreValido && detallesValido && imagenValido && modeloValido && precioValido && unidadesValido) {
-      var data = {
-        id: $('#productId').val(),
-        name: $('#name').val(),
-        brand: $('#brand').val(),
-        model: $('#model').val(),
-        price: $('#price').val(),
-        details: $('#details').val(),
-        units: $('#units').val(),
-        image: $('#image').val(),
+    // Verificar entradas
+    const isNombreValido = verificarEntNombre();
+    const isDetallesValido = verificarEntDetalles();
+    const isImagenValido = verificarEntImagen();
+    const isMarcaValido = verificarEntMarca();
+    const isModeloValido = verificarEntModelo();
+    const isPrecioValido = verificarEntPrecio();
+    const isUnidadesValido = verificarEntUnidades();
+
+    // Verificar si todos los campos son válidos
+    if (!isNombreValido || !isDetallesValido || !isImagenValido ||
+      !isMarcaValido || !isModeloValido || !isPrecioValido || !isUnidadesValido) {
+      // Aquí podrías mostrar un mensaje de error general si deseas
+      return; // Detener el proceso si hay errores
+    }
+
+    // Crear el objeto de datos para enviar
+    var data = {
+      id: $('#productId').val(),
+      name: $('#name').val(),
+      brand: $('#brand').val(),
+      model: $('#model').val(),
+      price: $('#price').val(),
+      details: $('#details').val(),
+      units: $('#units').val(),
+      image: $('#image').val(),
+    };
+
+    let url = edit === false ? './backend/product-add.php' : './backend/product-edit.php';
+
+    // Enviar los datos a PHP usando AJAX
+    $.ajax({
+      url: url,
+      type: 'POST', // Método de envío
+      data: JSON.stringify(data), // Convertir el objeto a JSON
+      contentType: 'application/json', // Tipo de contenido
+      success: function (response) {
+        let respuesta = JSON.parse(response);
+        let template = '';
+        template += `
+           Status: ${respuesta.status} <br />
+           Message: ${respuesta.message} <br />
+          `;
+        $('#container').html(template);
+        $('#product-result').show();
+        fetchProducts(); // Llamada a la función para obtener los productos actualizados
+      },
+      error: function (xhr, status, error) {
+        // Manejo de errores en la solicitud AJAX
+        $('#container').html(`Error: ${xhr.status} - ${error}`);
+        $('#product-result').show();
       }
+    });
+  });
 
-      let url = edit === false ? './backend/product-add.php' : './backend/product-edit.php';
-
-      // Enviar los datos a PHP usando AJAX
+  function equalProducts(producto) {
+    return new Promise((resolve, reject) => {
       $.ajax({
-        url: url,
-        type: 'POST', // Método de envío
-        data: JSON.stringify(data), // Convertir el objeto a JSON
-        contentType: 'application/json', // Tipo de contenido
+        url: './backend/product-list.php',
+        type: 'GET',
         success: function (response) {
-          let respuesta = JSON.parse(response);
-          let template = '';
-          template += `
-               Status: ${respuesta.status} <br />
-               Message: ${respuesta.message} <br />
-              `;
-          $('#container').html(template);
-          $('#product-result').show();
-          fetchProducts();
+          let products = JSON.parse(response);
+          let exists = products.some(product => producto === product.nombre);
+          resolve(exists); // Devolver true si el producto existe, de lo contrario false
+        },
+        error: function (error) {
+          reject(error); // Manejo de errores
         }
       });
-    } else if (!nombreValido)
-      alert('El campo: Nombre no es valido');
-    else if (!detallesValido)
-      alert('El campo: Detalles no es valido');
-    else if (!precioValido)
-      alert('El campo: Precio no es valido');
-    else if (!imagenValido)
-      alert('El campo: Imagen no es valido');
-    else if (!modeloValido)
-      alert('El campo: Modelo no es valido');
-    else if (!unidadesValido)
-      alert('El campo: Unidades no es valido');
-    else if (!marcaValidoValido)
-      alert('El campo: Marca no es valido');
-  });
+    });
+  }
+
 
   //Listar productos 
   function fetchProducts() {
@@ -218,8 +277,13 @@ function verificarEntNombre() {
   // Limpiar mensajes anteriores
   $('#name-error').hide();
 
+  if (nombre == '') {
+    $('#name-error').html('<strong>Insertar un nombre</strong>').show();
+    return false;
+  }
+
   if (nombre.length > 100) {
-    $('#name-error').text('El nombre no debe exceder los 100 caracteres').show();
+    $('#name-error').html('<strong>El nombre no debe exceder los 100 caracteres</strong>').show();
     return false;
   }
 
@@ -233,8 +297,13 @@ function verificarEntMarca() {
   // Limpiar mensajes anteriores
   $('#brand-error').hide();
 
+  if (marca == '') {
+    $('#brand-error').html('<strong>Insertar una marca</strong>').show();
+    return false;
+  }
+
   if (marca.length > 100) {
-    $('#brand-error').text('El nombre de la marca no debe exceder los 100 caracteres').show();
+    $('#brand-error').html('<strong>El nombre de la marca no debe exceder los 100 caracteres</strong>').show();
     return false;
   }
 
@@ -248,19 +317,24 @@ function verificarEntModelo() {
   let Valido = true;
 
   // Limpiar mensajes anteriores
-  $('#model-container').text('');
+  $('#model-container').html('<strong>');
   $('#model-error').hide();
+
+  if (modelo == '') {
+    $('#model-error').html('<strong>Insertar un modelo</strong>').show();
+    return false;
+  }
 
   if (modelo.length > 25) {
     console.log('El nombre del modelo sobrepasa los 25 caracteres');
-    $('#model-container').text('El nombre del modelo sobrepasa los 25 caracteres');
-    $('#model-error').show();
+    $('#model-container').html('<strong>El nombre del modelo sobrepasa los 25 caracteres');
+    $('#model-error</strong>').show();
     Valido = false;
   }
 
   if (!regex.test(modelo)) {
-    $('#model-container').text('Ingresa solo letras, números o guiones');
-    $('#model-error').show();
+    $('#model-container').html('<strong>Ingresa solo letras, números o guiones');
+    $('#model-error</strong>').show();
     Valido = false;
   }
 
@@ -269,18 +343,25 @@ function verificarEntModelo() {
 
 
 function verificarEntPrecio() {
-  const precio = parseFloat(document.getElementById('price').value);
+  const precioInput = document.getElementById('price').value; // Obtener el valor como string
+  const precio = parseFloat(precioInput); // Convertir a número
 
   // Limpiar mensajes anteriores
   $('#price-error').hide();
 
+  if (precioInput.trim() === '') {
+    $('#price-error').html('<strong>Insertar un precio</strong>').show();
+    return false;
+  }
+
   if (isNaN(precio) || precio < 99.99) {
-    $('#price-error').text('El precio debe ser un número y no puede ser menor a 99.99').show();
+    $('#price-error').html('<strong>El precio debe ser un número y no puede ser menor a 99.99</strong>').show();
     return false;
   }
 
   return true;
 }
+
 
 
 function verificarEntDetalles() {
@@ -289,8 +370,13 @@ function verificarEntDetalles() {
   // Limpiar mensajes anteriores
   $('#details-error').hide();
 
+  if (detalles == '') {
+    $('#details-error').html('<strong>Insertar detalles</strong>').show();
+    return false;
+  }
+
   if (detalles.length > 250) {
-    $('#details-error').text('Los detalles no deben exceder los 250 caracteres').show();
+    $('#details-error').html('<strong>Los detalles no deben exceder los 250 caracteres</strong>').show();
     return false;
   }
 
@@ -299,18 +385,25 @@ function verificarEntDetalles() {
 
 
 function verificarEntUnidades() {
-  const unidades = parseInt(document.getElementById('units').value, 10);
+  const unidadesInput = document.getElementById('units').value; // Obtener el valor como string
+  const unidades = parseInt(unidadesInput, 10); // Convertir a número entero
 
   // Limpiar mensajes anteriores
   $('#units-error').hide();
 
+  if (unidadesInput.trim() === '') {
+    $('#units-error').html('<strong>Insertar unidades</strong>').show();
+    return false;
+  }
+
   if (isNaN(unidades) || unidades < 0) {
-    $('#units-error').text('Las unidades deben ser un número entero no negativo').show();
+    $('#units-error').html('<strong>Las unidades deben ser un número entero no negativo</strong>').show();
     return false;
   }
 
   return true;
 }
+
 
 
 function verificarEntImagen() {
@@ -319,10 +412,16 @@ function verificarEntImagen() {
   // Limpiar mensajes anteriores
   $('#image-error').hide();
 
+  if (imagen == '') {
+    $('#image-error').html('<strong>Insertar imagen predeterminado</strong>').show();
+    return false;
+  }
+
   if (!imagen || imagen !== 'img/predeterminado.png') {
-    $('#image-error').text('Por favor, ingresa la imagen predeterminada.').show();
+    $('#image-error').html('<strong>Por favor, ingresa la imagen predeterminada.</strong>').show();
     return false;
   }
 
   return true;
 }
+
