@@ -1,4 +1,6 @@
 <?php
+
+
 namespace Database;
 
 abstract class DataBase {
