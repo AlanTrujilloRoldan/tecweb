@@ -8,8 +8,8 @@ use Database\DataBase;
 class Products extends DataBase {
     private $response = [];
 
-    public function __construct() {
-        parent::__construct();
+    public function __construct($db,$user = 'root', $pass = '12345678a') {
+        parent::__construct($db,$user,$pass);
     }
 
     // Métodos como add, delete, edit, etc
