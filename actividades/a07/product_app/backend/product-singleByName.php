@@ -1,8 +1,6 @@
 <?php
 namespace Backend;
 
-require_once __DIR__ . '/Products.php';
-
 use Products\Products;
 
 // Obtener el nombre del producto desde la solicitud GET

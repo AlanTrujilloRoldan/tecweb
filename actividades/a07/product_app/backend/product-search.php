@@ -2,8 +2,6 @@
 
 namespace Backend;
 
-require_once __DIR__ . '/Products.php';
-
 use Products\Products;
 
 // Obtener el término de búsqueda desde la solicitud GET

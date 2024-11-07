@@ -1,7 +1,6 @@
 <?php
 namespace Products;
 
-require_once __DIR__ ."/database.php";
 use Database\DataBase;
 
 class Products extends DataBase {
