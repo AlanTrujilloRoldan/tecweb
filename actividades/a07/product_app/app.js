@@ -7,13 +7,13 @@ class app {
     this.hideErrors();
   }
 
-  
+
 
   setupEventListeners() {
     $('#name').on('keyup', () => this.searchByName());
     $('#search').on('keyup', () => this.searchProducts());
     $('#product-form').on('submit', (e) => this.submitForm(e));
-    
+
     // Agregar evento blur para validación en tiempo real
     $('#name').on('blur', () => this.validateField('#name', '#name-error', 100, 'Insertar un nombre'));
     $('#brand').on('blur', () => this.validateField('#brand', '#brand-error', 100, 'Insertar una marca'));
@@ -22,11 +22,11 @@ class app {
     $('#details').on('blur', () => this.validateField('#details', '#details-error', 250, 'Insertar detalles'));
     $('#units').on('blur', () => this.validateUnits());
     $('#image').on('blur', () => this.validateImage());
-    
+
     $(document).on('click', '.product-delete', (e) => this.deleteProduct(e));
     $(document).on('click', '.product-item', (e) => this.loadProductForEdit(e));
   }
-  
+
 
   hideErrors() {
     $('#name-error, #price-error, #details-error, #units-error, #brand-error, #model-error, #image-error, #name-valid').hide();
@@ -74,7 +74,7 @@ class app {
 
   async searchProducts() {
     const search = $('#search').val();
-  
+
     if (search) {
       try {
         const response = await $.ajax({
@@ -82,16 +82,43 @@ class app {
           type: 'GET',
           data: { search }
         });
-  
+
+        console.log(response);
+
         const products = JSON.parse(response);
-  
+
         let productList = '';
+        let templateLista = '';
+        
         products.forEach(product => {
           productList += `<li>${product.nombre}</li>`;
+          
+          templateLista += `
+          <tr productId="${product.id}">
+            <td>${product.id}</td>
+              <td>${product.nombre}</td>
+              <td>
+                <ul>
+                  <li>Precio: ${product.precio}</li>
+                  <li>Unidades: ${product.unidades}</li>
+                  <li>Modelo: ${product.modelo}</li>
+                  <li>Marca: ${product.marca}</li>
+                  <li>Detalles: ${product.detalles}</li>
+                </ul>
+              </td>
+              <td>
+                <button class="product-delete btn btn-danger"> 
+                  Delete 
+                </button>
+              </td>
+          </tr>`;
         });
-  
+
+        console.log(templateLista);
+        
+        $('#products').html(templateLista);
         $('#product-result').html(`<ul>${productList}</ul>`).show();
-  
+
       } catch (error) {
         console.error('Error en la búsqueda de productos:', error);
       }
@@ -99,7 +126,7 @@ class app {
       $('#product-result').hide();
     }
   }
-  
+
 
   async fetchProducts() {
     try {
@@ -109,7 +136,7 @@ class app {
       });
 
       this.displayProducts(JSON.parse(response));
-      
+
     } catch (error) {
       console.error('Error al obtener productos:', error);
     }
@@ -139,7 +166,7 @@ class app {
 
   submitForm(e) {
     e.preventDefault();
-    
+
     if (!this.validateForm()) return;
 
     const productData = {
@@ -158,27 +185,27 @@ class app {
   }
 
   async saveProduct(url, data) {
-      const response = await $.ajax({
-        url: url,
-        type: 'POST',
-        data: JSON.stringify(data),
-        contentType: 'application/json'
-      });
-      
-      const result = JSON.parse(response);
-      
-      
-      $('#container').html(`Status: ${result.status}<br />Message: ${result.message}`);
-      $('#product-result').show();
-      this.fetchProducts();
-    
+    const response = await $.ajax({
+      url: url,
+      type: 'POST',
+      data: JSON.stringify(data),
+      contentType: 'application/json'
+    });
+
+    const result = JSON.parse(response);
+
+
+    $('#container').html(`Status: ${result.status}<br />Message: ${result.message}`);
+    $('#product-result').show();
+    this.fetchProducts();
+
   }
 
   async deleteProduct(e) {
     if (confirm('¿Estás seguro que deseas eliminar el producto?')) {
       const element = $(e.target).closest('tr');
       const id = element.attr('productId');
-      
+
       try {
         const response = await $.ajax({
           url: './backend/product-delete.php',
