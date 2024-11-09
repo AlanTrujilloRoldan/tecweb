@@ -1,9 +1,9 @@
 <?php
-namespace Products;
+namespace TECWEB\MYAPI;
 
 require_once __DIR__ ."/database.php";
 
-use Database\DataBase;
+use TECWEB\MYAPI\DataBase;
 
 class Products extends DataBase {
     private $response = [];
