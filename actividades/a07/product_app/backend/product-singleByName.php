@@ -1,6 +1,6 @@
 <?php
-require_once __DIR__ . '/Products.php';
-use Products\Products;
+require_once __DIR__ . '/myapi/Products.php';
+use TECWEB\MYAPI\Products;
 
 // Obtener el nombre del producto desde la solicitud GET
 $name = $_GET['name'];
