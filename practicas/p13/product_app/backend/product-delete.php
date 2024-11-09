@@ -1,7 +1,7 @@
 <?php
 
 require_once __DIR__ . '/myapi/Delete/Delete.php';
-use TECWEB\MYAPI\Delete;
+use TECWEB\MYAPI\Delete\Delete;
 
 // Obtener el ID del producto desde la solicitud GET
 $id = $_GET['id'];

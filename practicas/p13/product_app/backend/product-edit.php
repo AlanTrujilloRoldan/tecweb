@@ -1,7 +1,7 @@
 <?php
 
 require_once __DIR__ . '/myapi/Update/Update.php';
-use TECWEB\MYAPI\Update;
+use TECWEB\MYAPI\Update\Update;
 
 // Crear una instancia de la clase Products
 $productApp = new Update('marketzone');

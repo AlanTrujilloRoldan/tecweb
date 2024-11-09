@@ -1,12 +1,12 @@
 <?php
 
-namespace TECWEB\MYAPI;
+namespace TECWEB\MYAPI\Update;
 
-require_once __DIR__ ."/../database.php";
+require_once __DIR__ ."/../Database.php";
 
-use TECWEB\MYAPI\DataBase;
+use TECWEB\MYAPI\Database\Database;
 
-class Update extends DataBase {
+class Update extends Database {
 
     public function __construct($db,$user = 'root', $pass = '12345678a') {
         parent::__construct($db,$user,$pass);

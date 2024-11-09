@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ . '/myapi/Read/Read.php';
-use TECWEB\MYAPI\Read;
+use TECWEB\MYAPI\Read\Read;
 
 // Crear una instancia de la clase Products
 $productApp = new Read('marketzone');

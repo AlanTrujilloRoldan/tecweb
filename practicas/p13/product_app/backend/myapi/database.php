@@ -1,8 +1,8 @@
 <?php
 
-namespace TECWEB\MYAPI;
+namespace TECWEB\MYAPI\Database;
 
-abstract class DataBase {
+abstract class Database {
     protected $conexion;
     protected $response = [];
 

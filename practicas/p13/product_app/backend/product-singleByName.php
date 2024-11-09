@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ . '/myapi/Read/Read.php';
-use TECWEB\MYAPI\Read;
+use TECWEB\MYAPI\Read\Read;
 
 // Obtener el nombre del producto desde la solicitud GET
 $name = $_GET['name'];
