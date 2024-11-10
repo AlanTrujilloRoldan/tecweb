@@ -1,6 +1,6 @@
 <?php
+require_once __DIR__ . '/../vendor/autoload.php';
 
-require_once __DIR__ . '/myapi/Delete/Delete.php';
 use TECWEB\MYAPI\Delete\Delete;
 
 // Obtener el ID del producto desde la solicitud GET

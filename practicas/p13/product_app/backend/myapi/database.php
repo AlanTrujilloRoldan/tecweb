@@ -2,7 +2,7 @@
 
 namespace TECWEB\MYAPI\Database;
 
-abstract class Database {
+abstract class database {
     protected $conexion;
     protected $response = [];
 

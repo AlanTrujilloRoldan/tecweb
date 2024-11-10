@@ -1,5 +1,6 @@
 <?php
-require_once __DIR__ . '/myapi/Create/Create.php';
+require_once __DIR__ . '/../vendor/autoload.php';
+
 use TECWEB\MYAPI\Create\Create;
 
 // Crear una instancia de la clase Products
