@@ -1,0 +1,51 @@
+<CatalogoVOD>
+    <cuenta>
+        <correo>usuario1@example.com</correo>
+        <perfiles>
+            <perfil>
+                <usuario>Usuario1<usuario> <!-- Falta el cierre de etiqueta -->
+                <idioma>Español</idioma>
+            <perfil> <!-- Etiqueta mal cerrada, debería ser </perfil> -->
+            <perfil>
+                <usuario>Usuario2</usuario>
+                <!-- Falta el elemento <idioma> -->
+            </perfil>
+        </perfiles>
+    </cuenta>
+    <contenido>
+        <peliculas>
+            <genero>
+                <nombre>Acción</nombre>
+                <titulo>
+                    <nombre>Pelicula 1</nombre>
+                    <duracion>120<!-- Falta el cierre de etiqueta -->
+                </titulo>
+                <titulo>
+                    <nombre>Pelicula 2</nombre>
+                    <duracion>95</duracion>
+                </titulo>
+                <titulo>
+                    <nombre>Pelicula 3</nombre>
+                <!-- Falta el elemento <duracion> y cierre de <titulo> -->
+            </genero>
+            <genero>
+                <nombre>Comedia</nombre>
+                <!-- Falta el cierre de <genero> y contenido de títulos -->
+        </peliculas>
+        <programas>
+            <genero>
+                <nombre>Drama</nombre>
+                <titulo>
+                    <nombre>Programa 1</nombre>
+                    <!-- Falta el elemento <duracion> -->
+                </titulo>
+                <titulo>
+                    <nombre>Programa 2</nombre>
+                    <duracion>45</duracion>
+                </titulo>
+                <titulo>
+                    <nombre>Programa 3</nombre>
+                    <duracion>50</duracion>
+            </genero> <!-- Etiqueta mal cerrada, debería ser </genero> -->
+        <!-- Falta cierre de <programas> y <contenido> -->
+</CatalogoVOD> <!-- Falta cierre correcto de varios elementos interiores -->
