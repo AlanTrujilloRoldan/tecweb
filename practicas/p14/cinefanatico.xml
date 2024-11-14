@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE cinefanatico SYSTEM "cinefanatico.dtd">
+<cinefanatico>
+    <tarjeta noserie="00001" visitas="10" puntos="100">
+        <nombre>Julian Perez</nombre>
+        <correo>julian@example.com</correo>
+        <telefono tipo="movil">222-4900512</telefono>
+        <telefono tipo="casa">222-4900513</telefono>
+    </tarjeta>
+    <tarjeta noserie="00002" visitas="20" puntos="200">
+        <nombre>Juan Perez</nombre>
+        <correo>juan@example.com</correo>
+        <telefono tipo="movil">222-4900514</telefono>
+    </tarjeta>
+</cinefanatico>
+
