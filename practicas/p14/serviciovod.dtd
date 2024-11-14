@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT servicioVOD (pelicula*, programa*)>
+
+<!ELEMENT pelicula (titulo, director, año)>
+<!ATTLIST pelicula
+    id CDATA #REQUIRED
+    categoria CDATA #REQUIRED
+>
+
+<!ELEMENT programa (titulo, temporadas, episodios)>
+<!ATTLIST programa
+    id CDATA #REQUIRED
+    categoria CDATA #REQUIRED
+>
+
+<!ELEMENT titulo (#PCDATA)>
+<!ELEMENT director (#PCDATA)>
+<!ELEMENT año (#PCDATA)>
+<!ELEMENT temporadas (#PCDATA)>
+<!ELEMENT episodios (#PCDATA)>

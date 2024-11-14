@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE servicioVOD SYSTEM "serviciovod.dtd">
+<servicioVOD>
+    <pelicula id="001" categoria="Acción">
+        <titulo>Rapidos y Furiosos 1</titulo>
+        <director>Rob Cohen</director>
+        <año>2001</año>
+    </pelicula>
+    <pelicula id="002" categoria="Drama">
+        <titulo>Lo Imposible</titulo>
+        <director>Juan Antonio Bayona</director>
+        <año>2012</año>
+    </pelicula>
+    <programa id="003" categoria="Comedia">
+        <titulo>The Office</titulo>
+        <temporadas>9</temporadas>
+        <episodios>201</episodios>
+    </programa>
+</servicioVOD>
