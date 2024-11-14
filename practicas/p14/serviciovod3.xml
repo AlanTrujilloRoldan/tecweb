@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE servicioVOD SYSTEM "serviciovod.dtd">
+<servicioVOD>
+    <pelicula id="001" categoria="Acción">
+        <titulo>&lt;video id="11"&gt;&amp;lt;&lt;/video&gt;</titulo> <!-- Uso de entidades predefinidas -->
+        <director>George Miller</director>
+        <año>2015</año>
+    </pelicula>
+    <pelicula id="002" categoria="Drama">
+        <titulo>Forrest Gump</titulo>
+        <director>Robert Zemeckis</director>
+        <año>1994</año>
+    </pelicula>
+    <programa id="P01" categoria="Comedia">
+        <titulo><![CDATA[<video id="11">&lt;</video>]]></titulo> <!-- Uso de CDATA -->
+        <temporadas>9</temporadas>
+        <episodios>201</episodios>
+    </programa>
+</servicioVOD>
