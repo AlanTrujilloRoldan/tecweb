@@ -11,6 +11,7 @@
 <body>
 
     <!-- BARRA DE NAVEGACIÓN -->
+    <!-- BARRA DE NAVEGACIÓN -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href=".">UMSS</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -20,10 +21,10 @@
         <div class="collapse navbar-collapse" role="group" aria-label="NavBar">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                    <button class="btn btn-secondary mr-2" type="button" id="formulario">Formulario</button>
+                    <a class="btn btn-secondary mr-2" href="./formulario.php" id="formulario">Formulario</a>
                 </li>
                 <li class="nav-item active">
-                    <button class="btn btn-secondary" type="button" id="dashboard">Dashboard</button>
+                    <a class="btn btn-secondary" href="./dashboard.php" id="dashboard">Dashboard</a>
                 </li>
             </ul>
         </div>
