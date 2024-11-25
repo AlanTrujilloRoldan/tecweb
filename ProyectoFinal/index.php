@@ -17,10 +17,12 @@
             <span class="navbar-toggler-icon"></span>
         </button>
 
+        
+
         <div class="collapse navbar-collapse" role="group" aria-label="NavBar">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                    <button class="btn btn-secondary" type="button" id="formulario">Formulario</button>
+                    <button class="btn btn-secondary mr-2" type="button" a="" id="formulario">Formulario</button>
                 </li>
                 <li class="nav-item active">
                     <button class="btn btn-secondary" type="button" id="dashboard">Dashboard</button>
@@ -29,70 +31,30 @@
         </div>
     </nav>
 
+    <div class="container-fluid text-white p-5" style="position: relative; background-image: url('./backend/src/bannerUMSS.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0, 0, 0, 0.5); z-index: 1;"></div>
+        <div style="position: relative; z-index: 2;">
+            <h1>UMSS</h1>
+            <p class="lead">Un Mejor Sistema de Salud</p>
+        </div>
+    </div>
+
     <div class="container">
         <div class="row p-4">
             <!-- FORMULARIO PARA AGREGAR PRODUCTO -->
-            <div class="col-md-5">
+            <div class="col-12">
+                <h2 class="mt-4">Información de la Página</h2>
                 <div class="card">
                     <div class="card-body">
-                        <form id="product-form">
-                            <input type="hidden" id="productId">
-                            <div class="form-group">
-                                <input class="form-control" type="text" id="name" placeholder="Nombre de producto">
-                                <small id="name-error" class="card my-4 bg-danger border border-dark rounded p-4"></small>
-                                <small id="name-valid" class="card my-4 border border-dark rounded p-4" style="background-color: green;"></small>
-                            </div>
-                            <div class="form-group">
-                                <input class="form-control" type="text" id="brand" placeholder="Marca del producto">
-                                <small id="brand-error" class="card my-4 bg-danger border border-dark rounded p-4"></small>
-                            </div>
-                            <div class="form-group">
-                                <input class="form-control" type="text" id="model" placeholder="Modelo del producto">
-                                <small id="model-error" class="card my-4 bg-danger border border-dark rounded p-4"></small>
-                            </div>
-                            <div class="form-group">
-                                <input class="form-control" type="number" id="price" placeholder="Precio del producto">
-                                <small id="price-error" class="card my-4 bg-danger border border-dark rounded p-4"></small>
-                            </div>
-                            <div class="form-group">
-                                <input class="form-control" type="number" id="units" placeholder="Unidades del producto">
-                                <small id="units-error" class="card my-4 bg-danger border border-dark rounded p-4"></small>
-                            </div>
-                            <div class="form-group">
-                                <textarea class="form-control" id="details" cols="30" rows="10" placeholder="Detalles del producto"></textarea>
-                                <small id="details-error" class="card my-4 bg-danger border border-dark rounded p-4"></small>
-                            </div>
-                            <div class="form-group">
-                                <input class="form-control" type="text" id="image" placeholder="Imagen del producto">
-                                <small id="image-error" class="card my-4 bg-danger border border-dark rounded p-4"></small>
-                            </div>
-                            <button class="btn btn-primary btn-block text-center" type="submit" id="addProductButton">
-                                Agregar Producto
-                            </button>
-                        </form>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                     </div>
                 </div>
-            </div>
-
-            <!-- RESULTADOS DE LOS PRODUCTOS -->
-            <div class="col-md-7">
-                <div class="card my-4 " id="product-result">
+                <h2 class="mt-4">Información de la ODS</h2>
+                <div class="card">
                     <div class="card-body">
-                        <ul id="container"></ul>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                     </div>
                 </div>
-
-                <table class="table table-bordered table-sm">
-                    <thead>
-                        <tr>
-                            <td>Id</td>
-                            <td>Nombre</td>
-                            <td>Descripción</td>
-                            <td>Acciones</td>
-                        </tr>
-                    </thead>
-                    <tbody id="products"></tbody>
-                </table>
             </div>
         </div>
     </div>
@@ -103,7 +65,7 @@
         crossorigin="anonymous"></script>
 
     <!-- Lógica del Frontend -->
-    <script src="app.js"></script>
+    <script src="./backend/app.js"></script>
 
 </body>
 

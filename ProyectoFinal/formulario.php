@@ -126,7 +126,7 @@
         crossorigin="anonymous"></script>
 
     <!-- Lógica del Frontend -->
-    <script src="app.js"></script>
+    <script src="./backend/app.js"></script>
 
 </body>
 
