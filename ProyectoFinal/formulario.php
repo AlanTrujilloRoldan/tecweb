@@ -9,8 +9,6 @@
 </head>
 
 <body>
-
-    <!-- BARRA DE NAVEGACIÓN -->
     <!-- BARRA DE NAVEGACIÓN -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href=".">UMSS</a>
@@ -45,12 +43,12 @@
                             <div class="form-group">
                                 <label for="curp" class="col-sm-2 col-form-label">CURP</label>
                                 <input class="form-control" type="text" id="curp" placeholder="CURP" maxlength="18" minlength="18" required>
-                                <small id="name-error" class="card my-4 bg-danger border border-dark rounded p-4"></small>
+                                <small id="curp-error" class="card my-4 bg-danger border border-dark rounded p-4"></small>
                             </div>
                             <div class="form-group">
                                 <label for="edad" class="col-sm-2 col-form-label">Edad</label>
                                 <input class="form-control" type="number" id="edad" placeholder="Edad" min="0" max="99" required>
-                                <small id="brand-error" class="card my-4 bg-danger border border-dark rounded p-4"></small>
+                                <small id="edad-error" class="card my-4 bg-danger border border-dark rounded p-4"></small>
                             </div>
                             <div class="form-group">
                                 <label for="estado">Selecciona un estado</label>
@@ -88,7 +86,7 @@
                                     <option value="Yucatán">Yucatán</option>
                                     <option value="Zacatecas">Zacatecas</option>
                                 </select>
-                                <small id="model-error" class="card my-4 bg-danger border border-dark rounded p-4"></small>
+                                <small id="estado-error" class="card my-4 bg-danger border border-dark rounded p-4"></small>
                             </div>
                         </div>
                     </div>
@@ -108,7 +106,7 @@
                                     <input class="form-check-input" type="radio" name="radPro" id="privado" value="privado">
                                     <label class="form-check-label" for="privado">Privado</label>
                                 </div>
-                                <small id="name-error" class="card my-4 bg-danger border border-dark rounded p-4"></small>
+                                <small id="radPro-error" class="card my-4 bg-danger border border-dark rounded p-4"></small>
                             </div>
 
                             <div class="form-group">
@@ -121,19 +119,19 @@
                                     <input class="form-check-input" type="radio" name="radProMejorServicio" id="privadoServicio" value="privado">
                                     <label class="form-check-label" for="privadoServicio">Privado</label>
                                 </div>
-                                <small id="name-error" class="card my-4 bg-danger border border-dark rounded p-4"></small>
+                                <small id="radProMejorServicio-error" class="card my-4 bg-danger border border-dark rounded p-4"></small>
                             </div>
 
                             <div class="form-group">
                                 <label for="numConPublicas" class="col-form-label">Número de veces en que ha requerido del servicio de salud pública este año</label>
                                 <input class="form-control" type="number" id="numConPublicas" placeholder="Ingrese un número" min="0">
-                                <small id="name-error" class="card my-4 bg-danger border border-dark rounded p-4"></small>
+                                <small id="numConPublicas-error" class="card my-4 bg-danger border border-dark rounded p-4"></small>
                             </div>
 
                             <div class="form-group">
                                 <label for="numConPrivadas" class="col-form-label">Número de veces en que ha requerido del servicio de salud privada este año</label>
                                 <input class="form-control" type="number" id="numConPrivadas" placeholder="Ingrese un número" min="0">
-                                <small id="name-error" class="card my-4 bg-danger border border-dark rounded p-4"></small>
+                                <small id="numConPrivadas-error" class="card my-4 bg-danger border border-dark rounded p-4"></small>
                             </div>
 
                             <div class="form-group">
@@ -166,7 +164,7 @@
                                     <input class="form-check-input" type="checkbox" id="publicoOtros" value="Otros">
                                     <label class="form-check-label" for="publicoOtros">Otros</label>
                                 </div>
-                                <small id="name-error" class="card my-4 bg-danger border border-dark rounded p-4"></small>
+                                <small id="rzSaludPublica-error" class="card my-4 bg-danger border border-dark rounded p-4"></small>
                             </div>
 
                             <div class="form-group">
@@ -199,7 +197,7 @@
                                     <input class="form-check-input" type="checkbox" id="privadoOtros" value="Otros">
                                     <label class="form-check-label" for="privadoOtros">Otros</label>
                                 </div>
-                                <small id="name-error" class="card my-4 bg-danger border border-dark rounded p-4"></small>
+                                <small id="rzSaludPrivada-error" class="card my-4 bg-danger border border-dark rounded p-4"></small>
                             </div>
                         </div>
                     </div>
@@ -213,22 +211,22 @@
                             <div class="form-group">
                                 <label for="gastoPublico" class="col-form-label">¿Cuál es el gasto que implica una visita a un servicio de salud pública?</label>
                                 <input class="form-control" type="number" id="gastoPublico" placeholder="Ingrese un número" min="0">
-                                <small id="name-error" class="card my-4 bg-danger border border-dark rounded p-4"></small>
+                                <small id="gastoPublico-error" class="card my-4 bg-danger border border-dark rounded p-4"></small>
                             </div>
                             <div class="form-group">
                                 <label for="gastoPrivado" class="col-form-label">¿Cuál es el gasto que implica una visita a un servicio de salud privada? </label>
                                 <input class="form-control" type="number" id="gastoPrivado" placeholder="Ingrese un número" min="0">
-                                <small id="name-error" class="card my-4 bg-danger border border-dark rounded p-4"></small>
+                                <small id="gastoPrivado-error" class="card my-4 bg-danger border border-dark rounded p-4"></small>
                             </div>
                             <div class="form-group">
                                 <label for="numCliPublicas" class="col-form-label">Número de clínicas, hospitales, consultorios, etc., pertenecientes a la Secretaría de Salud Pública que conoce en su localidad </label>
                                 <input class="form-control" type="number" id="numCliPublicas" placeholder="Ingrese un número" min="0">
-                                <small id="name-error" class="card my-4 bg-danger border border-dark rounded p-4"></small>
+                                <small id="numCliPublicas-error" class="card my-4 bg-danger border border-dark rounded p-4"></small>
                             </div>
                             <div class="form-group">
                                 <label for="numCliPrivadas" class="col-form-label">Número de clínicas, hospitales, consultorios, etc., pertenecientes al sector privado que conoce en su localidad </label>
                                 <input class="form-control" type="number" id="numCliPrivadas" placeholder="Ingrese un número" min="0">
-                                <small id="name-error" class="card my-4 bg-danger border border-dark rounded p-4"></small>
+                                <small id="numCliPrivadas-error" class="card my-4 bg-danger border border-dark rounded p-4"></small>
                             </div>
                         </div>
                     </div>
@@ -268,7 +266,7 @@
                                     <input class="form-check-input" type="checkbox" id="otrosServicios" value="Otros">
                                     <label class="form-check-label" for="otrosServicios">Otros</label>
                                 </div>
-                                <small id="brand-error" class="card my-4 bg-danger border border-dark rounded p-4"></small>
+                                <small id="serviciosUsados-error" class="card my-4 bg-danger border border-dark rounded p-4"></small>
                             </div>
                             <div class="form-group">
                                 <label for="satisfaccionPublica">¿Qué tan satisfecho está con los servicios de salud pública disponibles en su localidad?</label>
@@ -278,7 +276,7 @@
                                     <option value="Insatisfecho">Insatisfecho</option>
                                     <option value="Muy insatisfecho">Muy insatisfecho</option>
                                 </select>
-                                <small id="brand-error" class="card my-4 bg-danger border border-dark rounded p-4"></small>
+                                <small id="satisfaccionPublica-error" class="card my-4 bg-danger border border-dark rounded p-4"></small>
                             </div>
                             <div class="form-group">
                                 <label for="satisfaccionPrivada">¿Qué tan satisfecho está con los servicios de salud privada disponibles en su localidad?</label>
@@ -288,7 +286,7 @@
                                     <option value="Insatisfecho">Insatisfecho</option>
                                     <option value="Muy insatisfecho">Muy insatisfecho</option>
                                 </select>
-                                <small id="brand-error" class="card my-4 bg-danger border border-dark rounded p-4"></small>
+                                <small id="satisfaccionPrivada-error" class="card my-4 bg-danger border border-dark rounded p-4"></small>
                             </div>
                         </div>
                     </div>
@@ -306,25 +304,23 @@
                                     <option value="Poco accesibles">Poco accesibles</option>
                                     <option value="Inaccesibles">Inaccesibles</option>
                                 </select>
-                                <small id="brand-error" class="card my-4 bg-danger border border-dark rounded p-4"></small>
+                                <small id="accesibilidadDistancia-error" class="card my-4 bg-danger border border-dark rounded p-4"></small>
                             </div>
-                            <div class="form-group">
-                                <label for="chequeosAnuales">¿Con qué frecuencia realiza chequeos médicos anuales?</label>
+                            <div class="form-group"> <label for="chequeosAnuales">¿Con qué frecuencia realiza chequeos médicos anuales?</label>
                                 <select class="form-control" id="chequeosAnuales">
                                     <option value="Nunca">Nunca</option>
                                     <option value="Una vez al año">Una vez al año</option>
                                     <option value="Más de una vez al año">Más de una vez al año</option>
                                 </select>
-                                <small id="brand-error" class="card my-4 bg-danger border border-dark rounded p-4"></small>
+                                <small id="chequeosAnuales-error" class="card my-4 bg-danger border border-dark rounded p-4"></small>
                             </div>
-                            <div class="form-group">
-                                <label for="consultasOnline">¿Con qué frecuencia utiliza servicios de consultas en línea?</label>
+                            <div class="form-group"> <label for="consultasOnline">¿Con qué frecuencia utiliza servicios de consultas en línea?</label>
                                 <select class="form-control" id="consultasOnline">
                                     <option value="Nunca">Nunca</option>
                                     <option value="Ocasionalmente">Ocasionalmente</option>
                                     <option value="Frecuentemente">Frecuentemente</option>
                                 </select>
-                                <small id="brand-error" class="card my-4 bg-danger border border-dark rounded p-4"></small>
+                                <small id="consultasOnline-error" class="card my-4 bg-danger border border-dark rounded p-4"></small>
                             </div>
                         </div>
                     </div>
@@ -341,7 +337,7 @@
                                     <option value="Falta de tiempo">Falta de tiempo</option>
                                     <option value="Lejanía">Lejanía de su domicilio al hospital, clínica, etc.</option>
                                 </select>
-                                <small id="brand-error" class="card my-4 bg-danger border border-dark rounded p-4"></small>
+                                <small id="razonNoVisita-error" class="card my-4 bg-danger border border-dark rounded p-4"></small>
                             </div>
                             <div class="form-group">
                                 <label for="afiliacionSalud">¿Cuenta con afiliación a algún servicio de salud?</label>
@@ -353,7 +349,7 @@
                                     <input class="form-check-input" type="radio" id="afiliacionNo" name="afiliacion" value="No">
                                     <label class="form-check-label" for="afiliacionNo">No</label>
                                 </div>
-                                <small id="brand-error" class="card my-4 bg-danger border border-dark rounded p-4"></small>
+                                <small id="afiliacionSalud-error" class="card my-4 bg-danger border border-dark rounded p-4"></small>
                             </div>
                             <div class="form-group">
                                 <label for="seguroGastos">¿Cuenta con seguro de gastos médicos mayores?</label>
@@ -365,7 +361,7 @@
                                     <input class="form-check-input" type="radio" id="seguroNo" name="seguro" value="No">
                                     <label class="form-check-label" for="seguroNo">No</label>
                                 </div>
-                                <small id="brand-error" class="card my-4 bg-danger border border-dark rounded p-4"></small>
+                                <small id="seguroGastos-error" class="card my-4 bg-danger border border-dark rounded p-4"></small>
                             </div>
                             <div class="form-group">
                                 <label for="medicamentosDificultad">¿Ha tenido dificultades para obtener medicamentos recetados en servicios públicos?</label>
@@ -377,7 +373,7 @@
                                     <input class="form-check-input" type="radio" id="medicamentosNo" name="medicamentos" value="No">
                                     <label class="form-check-label" for="medicamentosNo">No</label>
                                 </div>
-                                <small id="brand-error" class="card my-4 bg-danger border border-dark rounded p-4"></small>
+                                <small id="medicamentosDificultad-error" class="card my-4 bg-danger border border-dark rounded p-4"></small>
                             </div>
                             <div class="form-group">
                                 <label for="mejoras">¿Qué medidas considera importantes para mejorar los servicios de salud en su localidad?</label>
@@ -401,13 +397,13 @@
                                     <input class="form-check-input" type="checkbox" id="otroMejoras" value="Otro">
                                     <label class="form-check-label" for="otroMejoras">Otro</label>
                                 </div>
-                                <small id="brand-error" class="card my-4 bg-danger border border-dark rounded p-4"></small>
+                                <small id="mejoras-error" class="card my-4 bg-danger border border-dark rounded p-4"></small>
                             </div>
                         </div>
                     </div>
 
                     <button class="btn btn-lg btn-primary btn-block text-center mt-4" type="submit" id="addProductButton">
-                        Agregar Producto
+                        Enviar Datos
                     </button>
                 </form>
             </div>
